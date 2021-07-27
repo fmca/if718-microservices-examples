@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New transaction</title>
+</head>
+
+<body>
+    <p th:text="${error}" style="color: red"></p>
+    <form action="" method="post">
+        <label for="fromAccountId">Source account</label>
+        <input name="fromAccountId" type="number" />
+        <label for="toAccountId">Destination account</label>
+        <input name="toAccountId" type="number" />
+        <label for="value">Value</label>
+        <input name="value" type="number" />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

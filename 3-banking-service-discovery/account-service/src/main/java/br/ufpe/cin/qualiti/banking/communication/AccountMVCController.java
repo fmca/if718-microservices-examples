@@ -7,6 +7,8 @@ import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +26,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AccountMVCController {
 
     @Autowired private AccountController controller;
+    @Autowired private DiscoveryClient discoveryClient;
 
     @Value("${base_url}")
     private String baseUrl;
-
-    @Value("${transaction_service_url}")
-    private String transactionUrl;
 
     @ModelAttribute("baseUrl")
     public String getUrl() {
@@ -38,7 +38,9 @@ public class AccountMVCController {
 
     @ModelAttribute("transactionUrl")
     private String getTransactionUrl() {
-        return transactionUrl;
+        ServiceInstance sInstance = discoveryClient.getInstances("transaction").iterator().next();
+        return String.format(
+                "%s://%s:%s", sInstance.getScheme(), sInstance.getHost(), sInstance.getPort());
     }
 
     @GetMapping("")
