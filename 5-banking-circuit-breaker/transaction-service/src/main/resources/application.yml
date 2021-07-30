@@ -1,0 +1,25 @@
+server:
+    port: 8082
+    forward-headers-strategy: framework
+spring:
+    application:
+        name: transaction
+management:
+    health:
+        circuitbreakers:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+        enabled-by-default: true
+    endpoint:
+        health:
+            show-details: always
+        circuitbreakers:
+            enabled: true        
+resilience4j.circuitbreaker:
+    configs:  
+        default:
+            register-health-indicator: true
+    
