@@ -17,6 +17,6 @@ public class AccountApplication {
 
     @Bean
     public NewTopic topic() {
-        return TopicBuilder.name("transactions").partitions(10).replicas(1).build();
+        return TopicBuilder.name("accounts").partitions(10).replicas(1).build();
     }
 }

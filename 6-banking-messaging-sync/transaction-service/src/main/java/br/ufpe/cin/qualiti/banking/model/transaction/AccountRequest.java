@@ -1,7 +1,6 @@
 package br.ufpe.cin.qualiti.banking.model.transaction;
 
 import java.io.Serializable;
-
 import lombok.Value;
 
 @Value

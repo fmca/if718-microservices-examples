@@ -15,7 +15,7 @@ public class TransactionApplication {
 
     @Bean
     @LoadBalanced
-    public WebClient.Builder getWebClient(){
+    public WebClient.Builder getWebClient() {
         return WebClient.builder();
     }
 }

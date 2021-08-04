@@ -4,6 +4,7 @@ import br.ufpe.cin.qualiti.banking.communication.Event;
 import br.ufpe.cin.qualiti.banking.communication.TransactionApprovedEvent;
 import br.ufpe.cin.qualiti.banking.communication.TransactionCanceledEvent;
 import br.ufpe.cin.qualiti.banking.communication.TransactionCompletedEvent;
+import br.ufpe.cin.qualiti.banking.communication.TransactionCreatedEvent;
 import br.ufpe.cin.qualiti.banking.communication.TransactionSavedEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class TransactionController {
     @Transactional
     public Transaction doTransaction(TransactionDTO transactionDTO) {
         Transaction transaction = transactionCollection.insert(transactionDTO.toEntity());
-        kafkaTemplate.send(topic.name(), new TransactionApprovedEvent(transactionDTO));
+        kafkaTemplate.send(topic.name(), new TransactionCreatedEvent(transactionDTO));
         return transaction;
     }
 

@@ -1,7 +1,6 @@
 package br.ufpe.cin.qualiti.banking.model.transaction;
 
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
