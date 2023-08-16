@@ -12,6 +12,9 @@
 		"ghcr.io/devcontainers/features/java": {
 			"mavenVersion": "3.6.3",
 			"version": "11"
+		},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker": {
+			"version": "20.10"
 		}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
