@@ -17,9 +17,19 @@ management:
         health:
             show-details: always
         circuitbreakers:
-            enabled: true        
+            enabled: true
+eureka:
+    instance:
+        hostname: localhost      
 resilience4j.circuitbreaker:
     configs:  
         default:
             register-health-indicator: true
+            slidingWindowSize: 5
+
+resilience4j.timelimiter:
+    configs:
+        default:
+            timeoutDuration: 4s
+            cancelRunningFuture: true
     
